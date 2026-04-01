@@ -1,0 +1,117 @@
+/*setting up body*/
+body{
+ margin:0;
+ padding:0;
+ font-family:'Inter',sans-serif;
+ background:linear-gradient(135deg,#0d0e15 0%,#1a1c29 100%);
+ color:#e0e0e0;
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+/*creating glass box*/
+.glass-box{
+ background:rgba(255,255,255,0.03);
+ backdrop-filter:blur(16px);
+ border:1px solid rgba(255,255,255,0.05);
+ border-radius:24px;
+ padding:40px;
+ width:100%;
+ max-width:400px;
+ box-shadow:0 10px 40px rgba(0,0,0,0.4);
+ animation:fade-in 0.6s ease-out;
+}
+@keyframes fade-in{
+ from{opacity:0;transform:translateY(20px);}
+ to{opacity:1;transform:translateY(0);}
+}
+/*styling text*/
+h1{
+ margin:0 0 5px;
+ font-size:28px;
+ font-weight:800;
+ background:linear-gradient(90deg,#00f2fe,#4facfe);
+ -webkit-background-clip:text;
+ -webkit-text-fill-color:transparent;
+}
+p{
+ margin:0 0 30px;
+ color:#8892b0;
+ font-size:14px;
+}
+/*styling inputs*/
+.input-grp{
+ margin-bottom:20px;
+}
+label{
+ display:block;
+ font-size:12px;
+ text-transform:uppercase;
+ letter-spacing:1px;
+ margin-bottom:8px;
+ color:#a8b2d1;
+ font-weight:600;
+}
+input,select{
+ width:100%;
+ padding:12px 14px;
+ background:rgba(0,0,0,0.2);
+ border:1px solid rgba(255,255,255,0.1);
+ border-radius:12px;
+ color:#fff;
+ font-size:15px;
+ font-family:'Inter',sans-serif;
+ box-sizing:border-box;
+ transition:border-color 0.3s,box-shadow 0.3s;
+}
+input:focus,select:focus{
+ outline:none;
+ border-color:#4facfe;
+ box-shadow:0 0 0 2px rgba(79,172,254,0.2);
+}
+/*styling button*/
+button{
+ width:100%;
+ padding:14px;
+ background:linear-gradient(90deg,#4facfe,#00f2fe);
+ color:#000;
+ border:none;
+ border-radius:12px;
+ font-size:16px;
+ font-weight:800;
+ cursor:pointer;
+ transition:transform 0.2s,box-shadow 0.2s;
+ margin-top:10px;
+}
+button:hover{
+ transform:translateY(-2px);
+ box-shadow:0 6px 20px rgba(0,242,254,0.4);
+}
+button:active{
+ transform:translateY(0);
+}
+/*styling messages*/
+#result{
+ margin-top:20px;
+ padding:15px;
+ border-radius:12px;
+ font-size:13px;
+ word-break:break-all;
+ animation:slide-up 0.3s ease-out;
+}
+.hidden{display:none;}
+.success-box{
+ background:rgba(46,213,115,0.1);
+ border:1px solid rgba(46,213,115,0.2);
+ color:#2ed573;
+}
+.error-box{
+ background:rgba(255,71,87,0.1);
+ border:1px solid rgba(255,71,87,0.2);
+ color:#ff4757;
+}
+@keyframes slide-up{
+ from{opacity:0;transform:translateY(10px);}
+ to{opacity:1;transform:translateY(0);}
+}

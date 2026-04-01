@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>TradeBot UI</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <!--main container-->
+ <div class="glass-box">
+  <h1>TradeBot</h1>
+  <p>binance testnet executor</p>
+  <form id="orderForm">
+   <div class="input-grp">
+    <label>symbol</label>
+    <input type="text" id="symbol" value="BTCUSDT" required>
+   </div>
+   <div class="input-grp">
+    <label>side</label>
+    <select id="side">
+     <option value="BUY">buy</option>
+     <option value="SELL">sell</option>
+    </select>
+   </div>
+   <div class="input-grp">
+    <label>type</label>
+    <select id="type">
+     <option value="MARKET">market</option>
+     <option value="LIMIT">limit</option>
+     <option value="STOP_LIMIT">stop limit</option>
+    </select>
+   </div>
+   <div class="input-grp">
+    <label>quantity</label>
+    <input type="number" id="qty" step="0.001" value="0.005" required>
+   </div>
+   <div class="input-grp" id="price-group" style="display:none;">
+    <label>price</label>
+    <input type="number" id="price" step="0.01">
+   </div>
+   <div class="input-grp" id="stop-group" style="display:none;">
+    <label>stop price</label>
+    <input type="number" id="stop" step="0.01">
+   </div>
+   <button type="submit" id="submitBtn">submit order</button>
+  </form>
+  <div id="result" class="hidden"></div>
+ </div>
+ <script src="script.js"></script>
+</body>
+</html>
