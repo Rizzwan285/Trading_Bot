@@ -1,8 +1,8 @@
 # Binance Futures Testnet Trading Bot
 
-A Python application for placing orders on the Binance Futures Testnet (USDT-M). Built with `python-binance` for API interactions, featuring both a `click` powered CLI and a stunning premium Web UI powered by `Flask`.
+A Python application for placing orders on the Binance Futures Testnet (USDT-M). Built with `python-binance` for API interactions, featuring a fully-fledged premium Web UI (`Flask`) and a robust interactive command-line interface (`click`).
 
-Currently supports **Market**, **Limit**, and **Stop-Limit** orders.
+Currently supports **Market**, **Limit**, **Stop-Limit**, **OCO**, **TWAP**, and **Grid** order types.
 
 ---
 
@@ -52,45 +52,67 @@ Before running the bot, ensure you have the following:
 
 ## Running the Premium Web UI
 
-You can now use a beautiful, modern graphical interface to trade!
+You can use a beautifully styled, modern graphical interface to cleanly execute all six types of trades!
 
 1. **Start the Flask Server:**
    ```bash
    python app.py
    ```
 2. **Open your browser:**
-   Navigate to `http://localhost:5000` to view the trading dashboard.
+   Navigate to `http://localhost:5000` to view the primary trading dashboard.
 3. **Execute Trades:**
-   Select your parameters (Market, Limit, Stop-Limit) and click submit. The UI will instantly display success or failure responses directly from the API.
+   Select your parameters (Market, Limit, Stop-Limit, OCO, TWAP, or Grid) and click submit. The UI will instantly display success or failure responses cleanly formatted directly from the API.
 
 ---
 
 ## Running the CLI Script
 
-If you prefer the command line, use the `cli.py` script.
+If you prefer the command line, use the `cli.py` script. The CLI has been natively **enhanced with interactive menus**!
 
-### Market Order
-Executes a buy or sell immediately at the current market price.
+### Interactive Mode (Enhanced UX)
+Simply run the script with no arguments. It will wipe your terminal and cleanly launch a step-by-step interactive menu that walks you through formatting your parameters effectively!
 ```bash
-python cli.py place-order --symbol BTCUSDT --side BUY --type MARKET --qty 0.005
+python cli.py
 ```
 
-### Limit Order
-Places an order to buy or sell at a specific price or better.
+### Direct Execution Examples
+You can bypass the interactive setup prompts by passing your parameters directly over the terminal:
+
+**Market Order:**
 ```bash
-python cli.py place-order --symbol BTCUSDT --side SELL --type LIMIT --qty 0.005 --price 90000
+python cli.py --symbol BTCUSDT --side BUY --type MARKET --qty 0.005
 ```
 
-### Stop-Limit Order
-Combines a stop trigger and a limit order. Requires both a price and a stop-price.
+**Limit Order:**
 ```bash
-python cli.py place-order --symbol BTCUSDT --side BUY --type STOP_LIMIT --qty 0.005 --price 60000 --stop-price 55000
+python cli.py --symbol BTCUSDT --side SELL --type LIMIT --qty 0.005 --price 90000
+```
+
+**Stop-Limit Order:**
+```bash
+python cli.py --symbol BTCUSDT --side BUY --type STOP_LIMIT --qty 0.005 --price 60000 --stop-price 55000
+```
+
+**OCO Order:**
+```bash
+python cli.py --symbol BTCUSDT --side BUY --type OCO --qty 0.005 --price 60000 --stop-price 55000
+```
+
+**TWAP Algorithm Order:**
+```bash
+python cli.py --symbol BTCUSDT --side BUY --type TWAP --qty 0.005
+```
+
+**Grid Algorithm Order:**
+```bash
+python cli.py --symbol BTCUSDT --side SELL --type GRID --qty 0.005 --price 90000
 ```
 
 ---
 
-## Important Notes
+## Assumptions Made
 
 * **Testnet Only:** This bot is strictly configured for the Binance Testnet. No real funds are used or at risk.
-* **Account Balance:** Ensure your testnet account is funded with sufficient mock USDT to place these orders.
-* **Logging:** All API events, order executions, and errors (from both the CLI and Web UI) are automatically recorded in `bot.log` for debugging and review.
+* **Account Balance:** Assumes your testnet account is adequately funded with sufficient mock USDT to facilitate these orders.
+* **Algorithmic Simulation:** TWAP and Grid orders are natively simulated locally by slicing the core quantity and executing chunks via basic time-sleep loops or percentage brackets off the master price.
+* **Logging:** All API events, order executions, and errors (from both the CLI and Web UI) are inherently recorded inside `bot.log` for clean debugging per the explicit project requirements.

@@ -13,40 +13,43 @@
  <!--main container-->
  <div class="glass-box">
   <h1>TradeBot</h1>
-  <p>binance testnet executor</p>
+  <p>Binance Testnet Executor</p>
   <form id="orderForm">
    <div class="input-grp">
-    <label>symbol</label>
+    <label>Symbol</label>
     <input type="text" id="symbol" value="BTCUSDT" required>
    </div>
    <div class="input-grp">
-    <label>side</label>
+    <label>Side</label>
     <select id="side">
-     <option value="BUY">buy</option>
-     <option value="SELL">sell</option>
+     <option value="BUY">Buy</option>
+     <option value="SELL">Sell</option>
     </select>
    </div>
    <div class="input-grp">
-    <label>type</label>
+    <label>Type</label>
     <select id="type">
-     <option value="MARKET">market</option>
-     <option value="LIMIT">limit</option>
-     <option value="STOP_LIMIT">stop limit</option>
+     <option value="MARKET">Market</option>
+     <option value="LIMIT">Limit</option>
+     <option value="STOP_LIMIT">Stop Limit</option>
+     <option value="OCO">OCO</option>
+     <option value="TWAP">TWAP</option>
+     <option value="GRID">Grid</option>
     </select>
    </div>
    <div class="input-grp">
-    <label>quantity</label>
+    <label>Quantity</label>
     <input type="number" id="qty" step="0.001" value="0.005" required>
    </div>
    <div class="input-grp" id="price-group" style="display:none;">
-    <label>price</label>
+    <label>Price</label>
     <input type="number" id="price" step="0.01">
    </div>
    <div class="input-grp" id="stop-group" style="display:none;">
-    <label>stop price</label>
+    <label>Stop Price</label>
     <input type="number" id="stop" step="0.01">
    </div>
-   <button type="submit" id="submitBtn">submit order</button>
+   <button type="submit" id="submitBtn">Submit Order</button>
   </form>
   <div id="result" class="hidden"></div>
  </div>

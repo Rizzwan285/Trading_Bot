@@ -1,7 +1,7 @@
 from flask import Flask,request,jsonify
 from flask_cors import CORS
 from bot.validators import check_order
-from bot.orders import place_market_order,place_limit_order,place_stop_limit
+from bot.orders import place_market_order,place_limit_order,place_stop_limit,place_oco,place_twap,place_grid
 #starting flask server
 my_app=Flask(__name__,static_url_path='',static_folder='static')
 CORS(my_app)
@@ -23,12 +23,19 @@ def handle_trade():
   #checking inputs
   check_order(sym,side,kind,qty,price,stop)
   #sending orders
+  res=None
   if kind=='MARKET':
    res=place_market_order(sym,side,qty)
   elif kind=='LIMIT':
    res=place_limit_order(sym,side,qty,price)
   elif kind=='STOP_LIMIT':
    res=place_stop_limit(sym,side,qty,price,stop)
+  elif kind=='OCO':
+   res=place_oco(sym,side,qty,price,stop)
+  elif kind=='TWAP':
+   res=place_twap(sym,side,qty)
+  elif kind=='GRID':
+   res=place_grid(sym,side,qty,price)
   return jsonify({"success":True,"data":res})
  except Exception as err:
   return jsonify({"success":False,"error":str(err)}),400

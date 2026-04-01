@@ -65,6 +65,10 @@ input,select{
  box-sizing:border-box;
  transition:border-color 0.3s,box-shadow 0.3s;
 }
+option{
+ color:#fff;
+ background:#1a1c29;
+}
 input:focus,select:focus{
  outline:none;
  border-color:#4facfe;

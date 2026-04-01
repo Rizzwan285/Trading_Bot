@@ -5,7 +5,7 @@ const btn=document.getElementById('submitBtn')
 //handling form submit
 order_form.addEventListener('submit',async(evt)=>{
  evt.preventDefault()
- btn.innerText='sending...'
+ btn.innerText='Sending...'
  //reading inputs
  const sym=document.getElementById('symbol').value
  const side=document.getElementById('side').value
@@ -34,17 +34,18 @@ order_form.addEventListener('submit',async(evt)=>{
   rs_box.classList.remove('hidden')
   if(j.success){
    rs_box.className='success-box'
-   rs_box.innerHTML='order placed ok: '+JSON.stringify(j.data)
+   const dt=j.data
+   rs_box.innerHTML=`Order Placed Successfully!<br><br><b>Order ID:</b> ${dt.orderId}<br><b>Symbol:</b> ${dt.symbol}<br><b>Status:</b> ${dt.status}<br><b>Executed Qty:</b> ${dt.executedQty||'0'}<br><b>Avg Price:</b> ${dt.avgPrice||'0'}`
   }else{
    rs_box.className='error-box'
-   rs_box.innerHTML='failed: '+j.error
+   rs_box.innerHTML='Failed: '+j.error
   }
  }catch(err){
   rs_box.classList.remove('hidden')
   rs_box.className='error-box'
-  rs_box.innerHTML='network error'
+  rs_box.innerHTML='Network Error'
  }
- btn.innerText='submit order'
+ btn.innerText='Submit Order'
 })
 //showing extra fields
 const t_select=document.getElementById('type')
@@ -53,10 +54,10 @@ const sp_box=document.getElementById('stop-group')
 //checking type change
 t_select.addEventListener('change',(e)=>{
  const v=e.target.value
- if(v==='MARKET'){
+ if(v==='MARKET'||v==='TWAP'){
   p_box.style.display='none'
   sp_box.style.display='none'
- }else if(v==='LIMIT'){
+ }else if(v==='LIMIT'||v==='GRID'){
   p_box.style.display='block'
   sp_box.style.display='none'
  }else{

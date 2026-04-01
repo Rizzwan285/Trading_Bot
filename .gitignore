@@ -1,6 +1,5 @@
 project_req.md
 venv/
 .env
-*.log
 __pycache__/
 *.py[cod]
